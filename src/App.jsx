@@ -68,6 +68,8 @@ function App() {
     }
   };
 
+  const [selectedTrack, setSelectedTrack] = useState(null);
+
   return (
     <>
       <TracksList
@@ -91,6 +93,8 @@ function App() {
           handleDelete={handleDelete}
         />
       )}
+      <NowPlaying 
+        track={selectedTrack} />
     </>
   ) ;
 }
