@@ -66,7 +66,7 @@ export { index, create, update, deleteTrack };
 
 // currently playing track
 
-const playingTrack = async (trackId) => {
+const nowPlaying = async (trackId) => {
     try {
         const res = await fetch(`${BASE_URL}/playing/${trackId}`, {
             method: "GET",
@@ -78,4 +78,4 @@ const playingTrack = async (trackId) => {
     }
 };
 
-export { playingTrack };
+export { nowPlaying };
