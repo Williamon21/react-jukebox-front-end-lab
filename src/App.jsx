@@ -83,8 +83,8 @@ function App() {
           handleFormOpen={handleFormOpen}
           handleSelect={handleSelect}
           handleAddTrack={handleAddTrack}
-        newTrack>
-       ) : (
+        newTrack/>
+        ) : (
         <TrackDetail
           track={selected}
           handleFormOpen={handleFormOpen}
@@ -92,7 +92,7 @@ function App() {
         />
       )}
     </>
-  );
+  ) ;
 }
 
 export default App;
