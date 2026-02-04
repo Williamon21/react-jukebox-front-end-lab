@@ -1,6 +1,6 @@
 import React from "react";
 
-const TracksList = ({ tracks, handleSelect, handleFormOpen }) => {
+const TrackList = ({ tracks, handleSelect, handleFormOpen }) => {
   return (
     <div className="sidebar-container">
       <h1>Track List</h1>
@@ -24,4 +24,4 @@ const TracksList = ({ tracks, handleSelect, handleFormOpen }) => {
   );
 };
 
-export default TracksList;
+export default TrackList;
