@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import "./App.css";
 // import { index } from "./services/trackService";
 import * as trackService from "./services/trackService";
-import TracksList from "./components/TrackList";
-import TrackDetail from "./components/TrackDetail";
-import TrackForm from "./components/TrackForm";
+import TrackList from "./components/TrackList/TrackList";
+import TrackDetail from "./components/TrackDetail/index";
+import TrackForm from "./components/TrackForm/index";
+import { nowPlaying } from "./services/trackService";
 
 function App() {
   const [tracks, setTracks] = useState([]);
@@ -72,7 +73,7 @@ function App() {
 
   return (
     <>
-      <TracksList
+      <TrackList
         tracks={tracks}
         handleSelect={handleSelect}
         handleFormOpen={handleFormOpen}
