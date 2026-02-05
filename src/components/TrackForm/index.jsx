@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const initialState = {
   title: "",
   artist: "",
   length: "",
-  releaseYear: ""
+  releaseYear: "",
+  coverUrl: "",
 };
 
 const TrackForm = ({
@@ -13,31 +14,42 @@ const TrackForm = ({
   handleFormOpen,
   selected,
 }) => {
-  const [formData, setFormData] = useState(selected || initialState);
+  const [formData, setFormData] = useState(initialState);
+
+  // Update formData if editing a selected track
+  useEffect(() => {
+    if (selected) {
+      setFormData({
+        title: selected.title || "",
+        artist: selected.artist || "",
+        length: selected.length || "",
+        releaseYear: selected.releaseYear || "",
+        coverUrl: selected.coverUrl || "",
+      });
+    } else {
+      setFormData(initialState);
+    }
+  }, [selected]);
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Stops default form submit behaviour
     try {
       if (selected) {
-        handleUpdateTrack(formData, selected._id);
+        await handleUpdateTrack(formData, selected._id);
       } else {
-        handleAddTrack(formData);
+        await handleAddTrack(formData);
       }
 
       handleFormOpen();
-      setFormData({
-        title: "",
-        artist: "",
-        length: "",
-        releaseYear: "",
-      });
+      setFormData(initialState); // reset form after submission
     } catch (error) {
       console.log(error.message);
     }
   };
 
   const handleChange = (e) =>
-    setFormData({ ...formData, [e.target.title]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
@@ -74,10 +86,18 @@ const TrackForm = ({
           name="releaseYear"
           value={formData.releaseYear}
           onChange={handleChange}
-          required
         />
+
+        <label htmlFor="coverUrl">Cover Art URL</label>
+        <input
+          type="text"
+          name="coverUrl"
+          value={formData.coverUrl}
+          onChange={handleChange}
+        />
+
         <button type="submit">
-          {selected ? "Update Track" : "Add New Track"}{" "}
+          {selected ? "Update Track" : "Add New Track"}
         </button>
       </form>
     </div>

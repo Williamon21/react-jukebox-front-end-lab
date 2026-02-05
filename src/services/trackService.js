@@ -23,14 +23,18 @@ const create = async (track) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(pet),
+      body: JSON.stringify(track),
     });
+
     const data = await res.json();
-    return data.pet;
+    return data.track;
   } catch (error) {
     console.log(error);
+    return { err: error.message }; 
   }
 };
+
+
 
 // update a track
 const update = async (formData, trackId) => {

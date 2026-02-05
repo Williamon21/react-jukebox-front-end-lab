@@ -27,12 +27,6 @@ const NowPlaying = ({ track }) => {
           className="cover-art"
         />
       )}
-
-      {track.audioUrl && (
-        <audio controls src={track.audioUrl}>
-          Your browser does not support the audio element.
-        </audio>
-      )}
     </div>
   );
 };

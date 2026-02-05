@@ -19,7 +19,9 @@ const TrackList = ({ tracks, handleSelect, handleFormOpen }) => {
           </ul>
         )}
       </div>
+      <div className="button">
       <button onClick={handleFormOpen}>New Track</button>
+      </div>
     </div>
   );
 };
