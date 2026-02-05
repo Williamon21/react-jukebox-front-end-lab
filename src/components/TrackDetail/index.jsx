@@ -13,7 +13,7 @@ const TrackDetail = ({ track, handleFormOpen, handleDelete }) => {
     <div className="details-container">
       <h1>{track.title}</h1>
       <p>Title: {track.title}</p>
-      <p>artist: {track.artist}</p>
+      <p>Artist: {track.artist}</p>
       <p>Length: {track.length}</p>
       <p>Release Year: {track.releaseYear}</p>
       <div className="button-container">
