@@ -27,9 +27,10 @@ function App() {
     fetchData();
   }, []); // only run on initial page load
 
-  const handleSelect = (track) => {
-    setSelected(track);
-  };
+ const handleSelect = (track) => {
+  setSelected(track); 
+};
+
 
   const handleFormOpen = (track) => {
     if (!track?._id) setSelected(null);
@@ -75,7 +76,6 @@ function App() {
     }
   };
 
-  const [selectedTrack, setSelectedTrack] = useState(null);
 
   return (
     <>
@@ -100,8 +100,7 @@ function App() {
           handleDelete={handleDelete}
         />
       )}
-      <NowPlaying 
-        track={selectedTrack} />
+      <NowPlaying track={selected} />
     </>
   ) ;
 }
